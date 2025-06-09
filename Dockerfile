@@ -5,7 +5,7 @@ FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 WORKDIR /app
 
 # Set environment variables (e.g., set Python to run in unbuffered mode)
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 # Install system dependencies for building libraries
 RUN apt-get update && apt-get install -y \
@@ -36,4 +36,4 @@ VOLUME ["/app/data"]
 EXPOSE 8080
 
 # Run the FastAPI app using uvicorn
-CMD ["/app/.venv/bin/fastapi", "run", "ai_companion/interfaces/whatsapp/webhook_endpoint.py", "--port", "8080", "--host", "0.0.0.0"]
+CMD ["/app/.venv/bin/fastapi", "run", "ai_companion/interfaces/telegram/telegram_endpoint.py", "--port", "8080", "--host", "0.0.0.0"]

@@ -1,4 +1,6 @@
+
 services:
+  # --- Servicio de Base de Datos Vectorial ---
   qdrant:
     image: qdrant/qdrant:latest
     ports:
@@ -6,6 +8,8 @@ services:
     volumes:
       - ./long_term_memory:/qdrant/storage
     restart: unless-stopped
+
+  # --- Servicio de Frontend/Debugging con Chainlit ---
   chainlit:
     build:
       context: .
@@ -14,17 +18,18 @@ services:
       - "8000:8000"
     env_file:
       - .env
+    # Nota: Solo necesitas QDRANT_URL para la comunicación entre contenedores.
     environment:
-      - QDRANT_PORT=6333
-      - QDRANT_API_KEY=None
-      - QDRANT_HOST=localhost
       - QDRANT_URL=http://qdrant:6333
     restart: unless-stopped
     volumes: 
       - ./short_term_memory:/app/data
     depends_on:
       - qdrant
-  whatsapp:
+
+  # --- Servicio de la App con Telegram ---
+  telegram_app:
+    image: ai-companion-app:telegram-v03
     build:
       context: .
       dockerfile: Dockerfile
@@ -33,9 +38,6 @@ services:
     env_file:
       - .env
     environment:
-      - QDRANT_PORT=6333
-      - QDRANT_API_KEY=None
-      - QDRANT_HOST=localhost
       - QDRANT_URL=http://qdrant:6333
     restart: unless-stopped
     volumes: 
