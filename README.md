@@ -1,13 +1,3 @@
-<p align="center">
-        <img alt="logo" src="img/ava_final_design.gif" width=1000 />
-    <h1 align="center">📱 Ava 📱</h1>
-    <h3 align="center">Turning the Turing Test into a WhatsApp Agent</h3>
-</p>
-
-<p align="center">
-    <img alt="logo" src="img/whatsapp_logo.png" width=100 />
-</p>
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -24,7 +14,6 @@
 ## Course Overview
 
 By the end of this course, you'll have built your own Ava too, capable of:
-
 
 * Receiving and sending Whatsapp messages 📲
 * Understanding your voice 🗣️
