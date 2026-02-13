@@ -18,8 +18,6 @@ TELEGRAM_API_URL = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 
 @telegram_router.post("/telegram_response")
 async def telegram_handler(request: Request) -> Response:
-    # Tu lógica del webhook va aquí...
-    # Por ahora, solo devolvemos OK para probar.
     data = await request.json()
     logger.info(f"Recibido de Telegram: {data}")
     return Response(content="OK", status_code=200)
